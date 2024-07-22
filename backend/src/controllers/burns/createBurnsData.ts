@@ -38,7 +38,7 @@ const createData: RequestHandler = async (req, res) => {
         const message = await client.messages.create({
             body: `${process.env.DOMAIN}/burn-funding-request/${response.fundindDataId}`,
             from: process.env.SENDER, // Your Twilio phone number
-            to: "+19494326164", // Recipient's phone number
+            to: req.body.phone, // Recipient's phone number
         });
 
         console.log(
