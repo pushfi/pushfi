@@ -133,8 +133,8 @@ const FundingRequest = ({ id }: { id: any }) => {
                                 <li className="">
                                     Interest Rates:
                                     <span className="font-bold">
-                                        {data.cMaxRange}
-                                    </span>{" "}
+                                        {data.tInterest}
+                                    </span>
                                     + 0% Promotion
                                 </li>
                                 <li className="">
