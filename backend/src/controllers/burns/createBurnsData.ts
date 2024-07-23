@@ -30,15 +30,30 @@ const createData: RequestHandler = async (req, res) => {
             }
         }
         const uniqueID = uuidv4();
+        const formatPhoneNumber = (phoneNumber: string): string => {
+            const cleanedNumber = phoneNumber.replace(/\D/g, "");
+
+            if (cleanedNumber.startsWith("1")) {
+                return `+${cleanedNumber}`;
+            }
+
+            if (cleanedNumber.length === 10) {
+                return `+1${cleanedNumber}`;
+            }
+
+            return phoneNumber; // Return original if not a valid US format
+        };
+
         const response = await burnsData.create({
             ...req.body,
+            number: formatPhoneNumber(req.body.phone),
             fundindDataId: uniqueID,
         });
 
         const message = await client.messages.create({
-            body: `${process.env.DOMAIN}/burn-funding-request/${response.fundindDataId}`,
+            body: `Hello ${req.body.name} from Burns Funding - Your loan status update is available. Visit ${process.env.DOMAIN}/burn-funding-request/${response.fundindDataId}`,
             from: process.env.SENDER, // Your Twilio phone number
-            to: req.body.phone, // Recipient's phone number
+            to: formatPhoneNumber(req.body.phone), // Recipient's phone number
         });
 
         console.log(
