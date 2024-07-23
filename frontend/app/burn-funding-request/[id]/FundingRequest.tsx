@@ -88,13 +88,13 @@ const FundingRequest = ({ id }: { id: any }) => {
                                 <li className="">
                                     Minimum Estimated Range =
                                     <span className="font-bold">
-                                        {data.tMinRange}
+                                        ${data.tMinRange}
                                     </span>
                                 </li>
                                 <li className="">
                                     Maximum Estimated Range =
                                     <span className="font-bold">
-                                        {data.tMaxRange}
+                                        ${data.tMaxRange}
                                     </span>
                                 </li>
                                 <li className="">
@@ -121,13 +121,13 @@ const FundingRequest = ({ id }: { id: any }) => {
                                 <li className="">
                                     Minimum Estimated Range =
                                     <span className="font-bold">
-                                        {data.cMinRange}
+                                        ${data.cMinRange}
                                     </span>
                                 </li>
                                 <li className="">
                                     Maximum Estimated Range =
                                     <span className="font-bold">
-                                        {data.cMaxRange}
+                                        ${data.cMaxRange}
                                     </span>
                                 </li>
                                 <li className="">
@@ -178,7 +178,7 @@ const FundingRequest = ({ id }: { id: any }) => {
                             <GiCheckMark className="text-xl pr-2" /># of
                             Revolving Accounts ={" "}
                             <span className="font-bold w-fit">
-                                ${data.revolvingAccounts}
+                                {data.revolvingAccounts}
                             </span>
                         </p>
                         <p className="flex w-full">
@@ -250,8 +250,7 @@ const FundingRequest = ({ id }: { id: any }) => {
                         </div>
                         <div className="flex px-6 text-white flex-col gap-2 items-center py-10">
                             <p className="text-[12px]">
-                                This email was sent to: {"{{"}
-                                5.PrimaryContactInformation.Email{"}}"}
+                                This email was sent to: {data.email}
                             </p>
                             <p className="text-[12px]">
                                 because you applied for a Personalized Funding

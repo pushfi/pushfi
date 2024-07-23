@@ -3,6 +3,7 @@ import mongoose, { Document, Schema, Model } from "mongoose";
 // Define the user schema
 const burnsDataSchema = new Schema(
     {
+        email: { type: String },
         name: { type: String },
         fundindDataId: { type: String },
         tMinRange: { type: String },
@@ -24,6 +25,7 @@ const burnsDataSchema = new Schema(
 // Define the interface for the User document
 interface IBurnsData extends Document {
     fundindDataId: string;
+    email: string;
     name: string;
     tMinRange: string;
     tMaxRange: string;
