@@ -14,6 +14,8 @@ import dotenv from "dotenv";
 import publicRoutes from "./routes/publicRoutes";
 import burnsRoutes from "./routes/burnsRoutes";
 
+import midasRoutes from "./routes/midasRoutes";
+
 dotenv.config();
 
 const app: Express = express();
@@ -39,6 +41,7 @@ interface RouteConfig {
 const routesConfig: RouteConfig = {
     public: publicRoutes,
     burn: burnsRoutes,
+    midas: midasRoutes,
 };
 
 // Function to register routes
