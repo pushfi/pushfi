@@ -1,12 +1,12 @@
 "use client";
 import { configureStore } from "@reduxjs/toolkit";
-
+import midasReducer from "./slices/midas/midasSlice";
 import { apiSlice } from "./slices/apiSlice";
 export const makeStore = () => {
     return configureStore({
         reducer: {
             [apiSlice.reducerPath]: apiSlice.reducer,
-            // publicStates: publicReducer,
+            midasStates: midasReducer,
         },
         middleware: (getDefaultMiddleware) =>
             getDefaultMiddleware().concat([apiSlice.middleware]),
