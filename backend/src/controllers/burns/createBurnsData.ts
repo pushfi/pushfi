@@ -51,7 +51,7 @@ const createData: RequestHandler = async (req, res) => {
         });
 
         const message = await client.messages.create({
-            body: `Dear ${req.body.name}, Your results from Burns Funding are now available. Please visit ${process.env.DOMAIN}/burn-funding-request/${response.fundindDataId} for details. Reply STOP to end`,
+            body: `Dear ${req.body.name}, Your results from Burns are now available. Please visit ${process.env.DOMAIN}/burn-funding-request/${response.fundindDataId} for details. Reply STOP to end`,
             from: process.env.SENDER, // Your Twilio phone number
             to: formatPhoneNumber(req.body.phone), // Recipient's phone number
         });
