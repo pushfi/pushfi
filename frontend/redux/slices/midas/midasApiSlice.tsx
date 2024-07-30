@@ -6,12 +6,20 @@ export const midasApiSllice = apiSlice.injectEndpoints({
         // fetch users
         fetchMidasInfor: builder.query({
             query: (body) => {
-                console.log(body);
-
                 return `/backend/midas/fetch-midas-data/${body.id}`;
+            },
+        }),
+        addMidasBrand: builder.mutation({
+            query: (body) => {
+                return {
+                    url: `/backend/midas/create-midas-brand`,
+                    method: "POST",
+                    body,
+                };
             },
         }),
     }),
 });
 
-export const { useFetchMidasInforQuery } = midasApiSllice;
+export const { useFetchMidasInforQuery, useAddMidasBrandMutation } =
+    midasApiSllice;

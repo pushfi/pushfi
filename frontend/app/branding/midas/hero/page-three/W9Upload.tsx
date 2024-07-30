@@ -2,6 +2,7 @@ import React, { useCallback, useEffect, useState } from "react";
 import { useDropzone } from "react-dropzone";
 import { MdOutlineStar } from "react-icons/md";
 import { FiXCircle } from "react-icons/fi";
+
 const W9Upload = ({
     w9files,
     setw9files,
@@ -10,14 +11,13 @@ const W9Upload = ({
     setw9files: any;
 }) => {
     const onDrop = (acceptedFiles: any) => {
-        setw9files([
-            ...w9files,
+        setw9files(
             acceptedFiles.map((file: any) =>
                 Object.assign(file, {
                     preview: URL.createObjectURL(file),
                 })
-            )[0],
-        ]); // Cast to the custom type
+            )
+        ); // Cast to the custom type
     };
     const { getRootProps, getInputProps, isDragActive } = useDropzone({
         onDrop,
@@ -36,12 +36,7 @@ const W9Upload = ({
     return (
         <div className="flex w-full ">
             <div className="flex flex-col w-full gap-1">
-                <p className="flex">
-                    Logo Updload{" "}
-                    <span className="text-red-500">
-                        <MdOutlineStar className="text-sm" />
-                    </span>
-                </p>
+                <p className="flex">w-9 Updload </p>
                 <div
                     {...getRootProps()}
                     className="flex gap-4 border border-dashed border-yellow-200/50 p-2 rounded-lg w-full"

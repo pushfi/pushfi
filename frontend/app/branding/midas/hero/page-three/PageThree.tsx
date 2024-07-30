@@ -10,7 +10,6 @@ const PageThree = () => {
         <div className="flex justify-center items-center flex-col gap-4 w-full snap-start">
             <Image src={MidasLogo} alt="midas" className="mt-[3vh] w-[100px]" />
             <h1 className="text-yellow-300 text-4xl">Let&apos;s Partner Up!</h1>
-
             <Form />
         </div>
     );

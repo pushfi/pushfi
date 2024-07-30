@@ -1,6 +1,6 @@
 import Image from "next/image";
 import React from "react";
-import midashero from "@/assets/images/midashero.png";
+import midashero from "@/assets/images/midasheroImage.png";
 import { MdNavigateBefore } from "react-icons/md";
 import { MdOutlineNavigateNext } from "react-icons/md";
 import { useAppDispatch } from "@/redux/hooks";
@@ -10,11 +10,11 @@ const PageOne = () => {
     return (
         <div className="flex flex-col gap-8 text-white/70 snap-start">
             <div className="flex items-center justify-center">
-                <div className="flex w-[90%] lg:w-[35%]">
+                <div className="flex w-[90%] lg:w-[35%] z-50">
                     <Image
                         src={midashero}
                         alt="midas-branding"
-                        className="w-full"
+                        className="w-full z-100"
                     />
                 </div>
             </div>

@@ -10,14 +10,13 @@ const LogoUpload = ({
     setlogofiles: any;
 }) => {
     const onDrop = (acceptedFiles: any) => {
-        setlogofiles([
-            ...logofiles,
+        setlogofiles(
             acceptedFiles.map((file: any) =>
                 Object.assign(file, {
                     preview: URL.createObjectURL(file),
                 })
-            )[0],
-        ]); // Cast to the custom type
+            )
+        ); // Cast to the custom type
     };
     const { getRootProps, getInputProps, isDragActive } = useDropzone({
         onDrop,
@@ -52,6 +51,7 @@ const LogoUpload = ({
                     >
                         <button>upload</button>
                     </label>
+
                     <input
                         {...getInputProps()}
                         id="logoupload"
