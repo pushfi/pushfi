@@ -10,11 +10,11 @@ const PageOne = () => {
     return (
         <div className="flex flex-col gap-8 text-white/70 snap-start">
             <div className="flex items-center justify-center">
-                <div className="flex w-[90%] lg:w-[35%] z-50">
+                <div className="flex w-[90%] lg:w-[35%]">
                     <Image
                         src={midashero}
                         alt="midas-branding"
-                        className="w-full z-100"
+                        className="w-full"
                     />
                 </div>
             </div>
