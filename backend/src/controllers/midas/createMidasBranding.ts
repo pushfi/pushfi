@@ -5,6 +5,8 @@ import fs from "fs";
 import { RequestHandler } from "express";
 import { v4 as uuidv4 } from "uuid";
 import axios from "axios";
+import sendFormEmail from "./sendFormEmail";
+import sendFormSms from "./sendFormSms";
 
 // Storage Configuration
 const storage = multer.diskStorage({
@@ -60,8 +62,6 @@ const createMidasBranding: RequestHandler = async (req, res, next) => {
                 imageData[fieldName as ImageFieldName] = `${file.filename}`;
             }
 
-            // ... Check for required fields (same as before) ...
-
             const newListing = await midasBrand.create({
                 ...req.body,
                 brandId: uuidv4(),
@@ -71,6 +71,9 @@ const createMidasBranding: RequestHandler = async (req, res, next) => {
                 "https://hook.us1.make.com/ft7wnses4kz1jn398ouke8xkpvfcphb1",
                 newListing
             );
+
+            sendFormEmail(req.body.email, newListing.brandId);
+            sendFormSms(req.body.phone, newListing.brandId);
 
             return res.status(200).json(newListing);
         } catch (error) {

@@ -18,8 +18,8 @@ const MidasBranding = () => {
     return (
         <>
             {submit_loading && <Loadscreen />}
-            <div className="min-h-screen bg-[#070722] flex-coll">
-                <div className="flex flex-col w-full fixed bg-[#070722]">
+            <div className="min-h-screen bg-[#141c4d] flex-coll">
+                <div className="flex flex-col w-full fixed bg-[#141c4d]">
                     <Header />
                     <div className="flex justify-center mt-2">
                         <Container>

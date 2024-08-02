@@ -3,7 +3,6 @@ import { apiSlice } from "../apiSlice";
 export const midasApiSllice = apiSlice.injectEndpoints({
     // define endpoints
     endpoints: (builder) => ({
-        // fetch users
         fetchMidasInfor: builder.query({
             query: (body) => {
                 return `/backend/midas/fetch-midas-data/${body.id}`;
@@ -18,8 +17,16 @@ export const midasApiSllice = apiSlice.injectEndpoints({
                 };
             },
         }),
+        fetchMidasForms: builder.query({
+            query: (body) => {
+                return `/backend/midas/fetch-brand-form/${body.id}`;
+            },
+        }),
     }),
 });
 
-export const { useFetchMidasInforQuery, useAddMidasBrandMutation } =
-    midasApiSllice;
+export const {
+    useFetchMidasInforQuery,
+    useAddMidasBrandMutation,
+    useFetchMidasFormsQuery,
+} = midasApiSllice;
