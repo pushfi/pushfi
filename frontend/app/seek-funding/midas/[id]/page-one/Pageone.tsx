@@ -28,7 +28,7 @@ const Pageone = ({ setpage }: { setpage: any }) => {
                     Lines. These may include Term Loans, Credit Cards & Lines of
                     Credit.
                 </p>
-                <div className="flex gap-4 w-full ">
+                <div className="flex flex-col lg:flex-raw gap-4 w-full ">
                     <div className="flex flex-col w-full gap-1">
                         <p className="flex text-gray-300">
                             How much is your Funding Request{" "}
@@ -93,7 +93,7 @@ const Pageone = ({ setpage }: { setpage: any }) => {
                         {checkboxData.map((text) => {
                             return (
                                 <div
-                                    className="flex w-1/2 items-center gap-1 py-1"
+                                    className="flex w-full lg:w-1/2 items-center gap-1 py-1"
                                     key={text}
                                 >
                                     <input
@@ -107,7 +107,10 @@ const Pageone = ({ setpage }: { setpage: any }) => {
                     </div>
                 </div>
                 <div className="flex  gap-8  w-full pb-4">
-                    <div className="flex items-center p-1 pl-2  bg-yellow-300 text-gray-600 rounded-md cursor-pointer" onClick={()=>setpage(2)}>
+                    <div
+                        className="flex items-center p-1 pl-2  bg-yellow-300 text-gray-600 rounded-md cursor-pointer"
+                        onClick={() => setpage(2)}
+                    >
                         <p>Next</p>{" "}
                         <MdOutlineNavigateNext className="text-3xl" />
                     </div>

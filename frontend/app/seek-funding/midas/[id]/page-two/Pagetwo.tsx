@@ -19,7 +19,7 @@ const Pagetwo = ({ setpage }: { setpage: any }) => {
                             <MdOutlineStar className="text-sm" />
                         </span>
                     </p>
-                    <div className="flex gap-2 w-full">
+                    <div className="flex gap-2 w-full flex-col lg:flex-row">
                         <input
                             placeholder="First Name"
                             className="h-11 bg-gray-100/20 rounded-md px-2 outline-none focus:border-gray-200/50 focus:border-[1px]"
@@ -34,7 +34,7 @@ const Pagetwo = ({ setpage }: { setpage: any }) => {
                         />
                     </div>
                 </div>
-                <div className="flex gap-4 w-full">
+                <div className="flex gap-4 flex-col lg:flex-row w-full">
                     <div className="flex flex-col w-full gap-1">
                         <p className="flex text-gray-300">
                             Mobile Phone{" "}
@@ -78,14 +78,14 @@ const Pagetwo = ({ setpage }: { setpage: any }) => {
                         </p>
                     </div>
                 </div>
-                <div className="flex gap-1 flex-col w-full">
+                <div className="flex gap-1 flex-col w-full ">
                     <p className="flex text-gray-300">
                         Home Address{" "}
                         <span className="text-red-500">
                             <MdOutlineStar className="text-sm" />
                         </span>
                     </p>
-                    <div className="flex gap-2 w-full">
+                    <div className="flex gap-2 w-full flex-col lg:flex-row">
                         <input
                             placeholder="Addres Line 1"
                             className="h-11 bg-gray-100/20 rounded-md px-2 outline-none focus:border-gray-200/50 focus:border-[1px] w-full"
@@ -96,7 +96,7 @@ const Pagetwo = ({ setpage }: { setpage: any }) => {
                         />
                     </div>
                 </div>
-                <div className="flex gap-4 w-full">
+                <div className="flex gap-4 w-full flex-col lg:flex-row">
                     <div className="flex flex-col w-full gap-1">
                         <p className="flex text-gray-300">
                             Home State{" "}

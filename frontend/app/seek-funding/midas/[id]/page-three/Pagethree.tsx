@@ -34,7 +34,7 @@ const Pagethree = ({ setpage }: { setpage: any }) => {
             <form className="flex flex-col max-w-[40rem] w-full gap-8 pb-8 ">
                 <h2 className="font-bold ">Personal Information</h2>
 
-                <div className="flex gap-4 w-full">
+                <div className="flex gap-4 w-full flex-col lg:flex-row">
                     <div className="flex flex-col w-full gap-1">
                         <p className="flex text-gray-300">
                             Housing Status{" "}
@@ -106,7 +106,7 @@ const Pagethree = ({ setpage }: { setpage: any }) => {
                     <h2 className="font-bold ">
                         Income/Military/Education Information
                     </h2>
-                    <div className="flex gap-4 w-full ">
+                    <div className="flex gap-4 w-full flex-col lg:flex-row">
                         <div className="flex flex-col w-full gap-1">
                             <p className="flex text-gray-300">
                                 Annual Income Individually{" "}
@@ -137,11 +137,11 @@ const Pagethree = ({ setpage }: { setpage: any }) => {
                             <MdOutlineStar className="text-sm" />
                         </span>
                     </p>
-                    <div className="flex w-full flex-wrap">
+                    <div className="flex w-full flex-col lg:flex-row flex-wrap">
                         {checkboxData.map((text) => {
                             return (
                                 <div
-                                    className="flex w-1/2 items-center gap-1 py-1"
+                                    className="flex w-full lg:w-1/2 items-center gap-1 py-1"
                                     key={text}
                                 >
                                     <input
@@ -158,7 +158,7 @@ const Pagethree = ({ setpage }: { setpage: any }) => {
                     <h2 className="font-bold ">
                         Are seeking funding for your Existing Business?
                     </h2>
-                    <div className="flex gap-4 w-full ">
+                    <div className="flex gap-4 w-full flex-col lg:flex-row">
                         <div className="flex flex-col w-full gap-1">
                             <p className="flex text-gray-300">Company Name</p>
                             <input className="h-11 bg-gray-100/20 rounded-md px-2 outline-none focus:border-gray-200/50 focus:border-[1px]" />
@@ -171,7 +171,7 @@ const Pagethree = ({ setpage }: { setpage: any }) => {
                             />
                         </div>
                     </div>
-                    <div className="flex gap-4 w-full ">
+                    <div className="flex gap-4 w-full flex-col lg:flex-row">
                         <div className="flex flex-col w-full gap-1">
                             <p className="flex text-gray-300">
                                 Business Start Date
@@ -188,7 +188,7 @@ const Pagethree = ({ setpage }: { setpage: any }) => {
                             />
                         </div>
                     </div>
-                    <div className="flex gap-4 w-full items-end text-[0.8rem]">
+                    <div className="flex gap-4 w-full items-end text-[0.8rem] flex-col lg:flex-row">
                         <div className="flex flex-col w-full gap-1">
                             <p className="flex text-gray-300">Corp Structure</p>
                             <select className="h-11 bg-gray-100/20 rounded-md px-2 outline-none focus:border-gray-200/50 focus:border-[1px] text-gray-50">

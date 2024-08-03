@@ -10,6 +10,7 @@ import { useForm } from "react-hook-form";
 import { useAddMidasBrandMutation } from "@/redux/slices/midas/midasApiSlice";
 import { useAppDispatch } from "@/redux/hooks";
 import { setFeedback, setLoading } from "@/redux/slices/public/publicSlice";
+import Terms from "./Terms";
 
 const Form = () => {
     const [w9files, setw9files] = useState<(File & { preview: string })[]>([]);
@@ -72,6 +73,9 @@ const Form = () => {
     const onsubmit = (data: TaddBrandSchema) => {
         handleSubmitFunc(data);
     };
+    // terms
+
+    const [terms, setterms] = useState(false);
 
     return (
         <form
@@ -291,16 +295,19 @@ const Form = () => {
             <div className="flex">
                 <div className="flex gap-2 flex-col">
                     <div className="flex gap-2">
-                        {" "}
-                        <input type="checkbox" id="" {...register("terms")} />
+                        <input
+                            type="checkbox"
+                            id=""
+                            onChange={(e: any) =>
+                                setterms(e.target.checked as boolean)
+                            }
+                        />
                         <p>yes</p>
                     </div>
-                    {errors.terms && (
-                        <p className="text-red-500">{errors.terms.message}</p>
-                    )}
                 </div>
             </div>
-
+            {/* terms */}
+            {terms && <Terms />}
             <input
                 type="submit"
                 className="flex items-center p-1 px-4  bg-yellow-300 text-gray-600 rounded-md cursor-pointer w-fit"
