@@ -10,7 +10,7 @@ import { useFetchMidasFormsQuery } from "@/redux/slices/midas/midasApiSlice";
 import { notFound } from "next/navigation";
 
 const MidasId = ({ id }: { id: any }) => {
-    const [page, setpage] = useState(3);
+    const [page, setpage] = useState(1);
     const pages = [1, 2, 3];
 
     const { data, refetch, error, isError, isFetching, isLoading } =
