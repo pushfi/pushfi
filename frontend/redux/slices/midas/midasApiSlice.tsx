@@ -11,7 +11,7 @@ export const midasApiSllice = apiSlice.injectEndpoints({
         addMidasBrand: builder.mutation({
             query: (body) => {
                 return {
-                    url: `/backend/midas/create-midas-brand`,
+                    url: `/backend/broker/add-broker`,
                     method: "POST",
                     body,
                 };
