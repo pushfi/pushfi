@@ -3,7 +3,7 @@ import { v4 as uuidv4 } from "uuid";
 import Assessment from "../../../model/assessment";
 import twilio from "twilio";
 
-const postCorporateGrind: RequestHandler = async (req, res) => {
+const postDirectIdeaPros: RequestHandler = async (req, res) => {
     const accountSid = process.env.ACCOUNT_S_ID;
     const authToken = process.env.TWILLIO_AUTH_TOKEN;
     const client = twilio(accountSid, authToken);
@@ -48,18 +48,16 @@ const postCorporateGrind: RequestHandler = async (req, res) => {
             ...req.body,
             number: formatPhoneNumber(req.body.phone),
             fundindDataId: uniqueID,
-            type: "corporate grind group",
+            type: "direct idea pros quick touch",
         });
-
+        console.log(
+            `${process.env.DOMAIN}/assessment-data/direct-idea-pros-quick-touch/${response.fundindDataId}`
+        );
         const message = await client.messages.create({
-            body: `Dear ${req.body.name}, Your results from Corporate Grind group are now available. Please visit ${process.env.DOMAIN}/assessment-data/corporate-grind-group/${response.fundindDataId} for details. Reply STOP to end`,
+            body: `Dear ${req.body.name}, Your results from Direct Ideas Pros are now available. Please visit ${process.env.DOMAIN}/assessment-data/direct-idea-pros-quick-touch/${response.fundindDataId} for details. Reply STOP to end`,
             from: process.env.SENDER, // Your Twilio phone number
             to: formatPhoneNumber(req.body.phone), // Recipient's phone number
         });
-
-        console.log(
-            `${process.env.DOMAIN}/assessment-data/corporate-grind-group/${response.fundindDataId}`
-        );
 
         res.status(200).json(response);
     } catch (error) {
@@ -71,4 +69,4 @@ const postCorporateGrind: RequestHandler = async (req, res) => {
     }
 };
 
-export default postCorporateGrind;
+export default postDirectIdeaPros;

@@ -1,18 +1,33 @@
 "use client";
 import axios from "axios";
-import Link from "next/link";
+
 import React, { useEffect, useState } from "react";
+
+import Image1 from "./assets/directpro.png";
+import Image2 from "./assets/midasimage.png";
+import Image from "next/image";
+import Link from "next/link";
 import { FaLinkedinIn } from "react-icons/fa6";
 import { GiCheckMark } from "react-icons/gi";
 import { MdOutlineArrowRightAlt } from "react-icons/md";
 import { FaFacebookF } from "react-icons/fa";
-import Image1 from "./assets/directpro.png";
-import Image2 from "./assets/midasimage.png";
-import { useFetchBurnInforQuery } from "@/redux/slices/burn/burnApiSlice";
 import { notFound } from "next/navigation";
-import Image from "next/image";
+import { useFetchDirectIdeaProsQuery } from "@/redux/slices/assessment-data/assessmentDataApiSlice";
+const DirectIdeaPro = ({ id }: { id: any }) => {
+    const { data, error, isFetching, isLoading } = useFetchDirectIdeaProsQuery({
+        id,
+    });
 
-const DirectIdeaPro = () => {
+    if (isFetching) {
+        return (
+            <div className="w-full h-screen flex justify-center items-center">
+                please wait
+            </div>
+        );
+    }
+    if (error) {
+        return notFound();
+    }
     return (
         <div className="flex  bg-[#f9f9f9] min-h-screen  flex-col items-center">
             <div className="flex w-full max-w-[600px] bg-white flex-col items-center">
@@ -26,9 +41,8 @@ const DirectIdeaPro = () => {
                     <h1 className="font-semibold text-2xl text-center">
                         Funding Assessment Complete!
                     </h1>
-                    <h2 className=" font-semibold text-md px-6">
-                        Hello{" "}
-                        {"{{5.PrimaryContactInformation.Name.FirstAndLast}}"},
+                    <h2 className="mt-6 font-semibold text-md px-6">
+                        Hello {data?.name},
                     </h2>
                 </div>
                 <div className="flex bg-[#eec569] p-6 w-full max-w-[400px] mt-8 flex-col">
@@ -74,19 +88,19 @@ const DirectIdeaPro = () => {
                                 <li className="">
                                     Minimum Estimated Range =
                                     <span className="font-bold">
-                                        ${`{{49.value}}`}
+                                        {data.tMinRange}
                                     </span>
                                 </li>
                                 <li className="">
                                     Maximum Estimated Range =
                                     <span className="font-bold">
-                                        ${`{{50.value}}`}
+                                        {data.tMaxRange}
                                     </span>
                                 </li>
                                 <li className="">
                                     Interest Rates:
                                     <span className="font-bold">
-                                        {`{{45.value}}`}
+                                        {data.tInterest}
                                     </span>
                                 </li>
                                 <li className="">
@@ -107,19 +121,19 @@ const DirectIdeaPro = () => {
                                 <li className="">
                                     Minimum Estimated Range =
                                     <span className="font-bold">
-                                        ${`{{51.value}}`}
+                                        {data.cMinRange}
                                     </span>
                                 </li>
                                 <li className="">
                                     Maximum Estimated Range =
                                     <span className="font-bold">
-                                        ${`{{52.value}}`}
+                                        {data.cMaxRange}
                                     </span>
                                 </li>
                                 <li className="">
                                     Interest Rates:
                                     <span className="font-bold">
-                                        {`{{45.value}}`}
+                                        {data.tInterest}
                                     </span>
                                     + 0% Promotion
                                 </li>
@@ -143,37 +157,35 @@ const DirectIdeaPro = () => {
                         Credit Score Analysis:
                     </h2>
                     <h2 className="text-white text-lg font-semibold mt-2">
-                        TransUnion = {`{{7.data.applicant.score}}`}
+                        TransUnion = {data.transUnion}
                     </h2>
                     <div className="flex flex-col text-left w-full pt-6">
                         <p className="flex w-full">
                             <GiCheckMark className="text-xl pr-2" />
                             Unsecured Debt Balance={" "}
                             <span className="font-bold w-fit">
-                                ${`{{7.data.applicant.unsecured_debt}}`}
+                                {data.UnsecuredDebtBalance}
                             </span>
                         </p>
                         <p className="flex w-full">
                             <GiCheckMark className="text-xl pr-2" />
                             Total Revolving Debt Balance ={" "}
                             <span className="font-bold w-fit">
-                                $
-                                {`{{7.data.applicant.total_balance_revolving}}`}
+                                {data.revolvingDebtBalance}
                             </span>
                         </p>
                         <p className="flex w-full">
                             <GiCheckMark className="text-xl pr-2" /># of
                             Revolving Accounts ={" "}
                             <span className="font-bold w-fit">
-                                {`{{7.data.applicant.count_revolvingaccounts}}`}
+                                {data.revolvingAccounts}
                             </span>
                         </p>
                         <p className="flex w-full">
                             <GiCheckMark className="text-xl pr-2" />
                             Total Monthly Payments ={" "}
                             <span className="font-bold w-fit">
-                                $
-                                {`{{7.data.applicant.total_monthly_all_minusmortgage}}`}
+                                ${data.totalMonthlyPayments}
                             </span>
                         </p>
                     </div>
@@ -195,10 +207,10 @@ const DirectIdeaPro = () => {
                 </div>
                 <div className="flex bg-[#051c50] w-full">
                     <div className="flex  w-full pt-8 flex-col px-6 items-center">
-                        <Image
+                        <img
                             className="w-[100px]"
-                            src={Image2}
-                            alt="midas image"
+                            src="https://assets.unlayer.com/projects/194901/1699805131244-unnamed-5-PhotoRoom.png-PhotoRoom.png"
+                            alt=""
                         />
                         <h2 className="text-[#eec569] font-semibold">
                             ALTERNATIVE LENDING MADE EASY
@@ -238,8 +250,7 @@ const DirectIdeaPro = () => {
                         </div>
                         <div className="flex px-6 text-white flex-col gap-2 items-center py-10">
                             <p className="text-[12px]">
-                                This email was sent to:{" "}
-                                {` {{5.PrimaryContactInformation.Email}}`}
+                                This email was sent to: {data?.email}
                             </p>
                             <p className="text-[12px]">
                                 because you applied for a Personalized Funding
