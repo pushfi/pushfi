@@ -13,8 +13,8 @@ import { errorHandler } from "./middleware/errorHandler";
 import dotenv from "dotenv";
 import publicRoutes from "./routes/publicRoutes";
 import burnsRoutes from "./routes/burnsRoutes";
-
 import midasRoutes from "./routes/midasRoutes";
+import assessmentRoutes from "./routes/assessmentRoutes";
 
 dotenv.config();
 
@@ -42,6 +42,7 @@ const routesConfig: RouteConfig = {
     public: publicRoutes,
     burn: burnsRoutes,
     midas: midasRoutes,
+    assessment: assessmentRoutes,
 };
 
 // Function to register routes
