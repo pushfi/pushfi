@@ -1,4 +1,5 @@
 "use client";
+import { notFound } from "next/navigation";
 import React from "react";
 import Image1 from "./asserts/hlplogo.png";
 import Image2 from "./asserts/credit-score.png";
@@ -8,8 +9,26 @@ import Image5 from "./asserts/linkedin.png";
 import Image6 from "./asserts/facebook.png";
 import Image7 from "./asserts/PushFi-150.png";
 import Image from "next/image";
+import { useFetchHlpCreditSolutionsQuery } from "@/redux/slices/assessment-data/assessmentDataApiSlice";
 
-const HlpCreditSolutions = () => {
+const HlpCreditSolutions = ({ id }: { id: any }) => {
+    // fetch user
+
+    const { data, error, isFetching, isLoading } =
+        useFetchHlpCreditSolutionsQuery({
+            id,
+        });
+
+    if (isFetching) {
+        return (
+            <div className="w-full h-screen flex justify-center items-center">
+                please wait
+            </div>
+        );
+    }
+    if (error) {
+        return notFound();
+    }
     return (
         <div className="bg-gray-100 font-sans text-gray-700">
             <div className="p-4 mx-auto max-w-[40rem]">
@@ -29,7 +48,7 @@ const HlpCreditSolutions = () => {
                 </div>
                 <div className="mt-4 text-left flex flex-col gap-6">
                     <p className="text-lg font-semibold text-[#106beb]">
-                        Hello {`{{7.data.applicant.firstName}}`},
+                        Hello {data?.name},
                     </p>
                     <p className="mt-2">
                         Great news! Your funding request has been successfully
@@ -55,26 +74,23 @@ const HlpCreditSolutions = () => {
                         </h1>
                         <p>
                             TransUnion ={" "}
-                            <strong className="text-xl">{`{{7.data.applicant.score}}`}</strong>
+                            <strong className="text-xl">
+                                {data?.transUnion}
+                            </strong>
                         </p>
 
                         <div className="w-full flex flex-col">
                             <p>
                                 Unsecured Debt Balance ={" "}
-                                <strong>
-                                    ${`{{7.data.applicant.unsecured_debt}}`}
-                                </strong>
+                                <strong>{data.UnsecuredDebtBalance}</strong>
                             </p>
                             <p>
                                 Revolving Debt Balance ={" "}
-                                <strong>
-                                    $
-                                    {`{{7.data.applicant.total_balance_revolving}}`}
-                                </strong>
+                                <strong>{data.revolvingDebtBalance}</strong>
                             </p>
                             <p>
                                 # of Revolving Accounts ={" "}
-                                <strong>{`{{7.data.applicant.count_revolvingaccounts}}`}</strong>
+                                <strong>{data.revolvingAccounts}</strong>
                             </p>
                         </div>
                     </div>
@@ -90,14 +106,14 @@ const HlpCreditSolutions = () => {
                     </h2>
                     <p>
                         Minimum Estimated Range ={" "}
-                        <strong>{`{{49.value}}`}</strong>
+                        <strong>{data.tMinRange}</strong>
                     </p>
                     <p>
                         Maximum Estimated Range ={" "}
-                        <strong>{`{{50.value}}`}</strong>
+                        <strong>{data.tMaxRange}</strong>
                     </p>
                     <p>
-                        Interest Rate Range = <strong>{`{{45.value}}`}</strong>
+                        Interest Rate Range = <strong>{data.tInterest}</strong>
                     </p>
                     <p>
                         Terms = <strong>5 years to 10 years+</strong>
@@ -111,15 +127,15 @@ const HlpCreditSolutions = () => {
                     </h2>
                     <p>
                         Minimum Estimated Range ={" "}
-                        <strong>{`{{51.value}}`}</strong>
+                        <strong>{data.cMinRange}</strong>
                     </p>
                     <p>
                         Maximum Estimated Range ={" "}
-                        <strong>{`{{52.value}}`}</strong>
+                        <strong>{data.cMaxRange}</strong>
                     </p>
                     <p>
                         Interest Rate Range ={" "}
-                        <strong>{`{{45.value}}`} + 0% Promotion</strong>
+                        <strong>{data.tInterest} + 0% Promotion</strong>
                     </p>
                     <p>
                         Terms = <strong>Revolving & Charge</strong>

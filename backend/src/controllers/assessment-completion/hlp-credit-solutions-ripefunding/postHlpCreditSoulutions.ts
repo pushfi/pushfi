@@ -3,7 +3,7 @@ import { v4 as uuidv4 } from "uuid";
 import Assessment from "../../../model/assessment";
 import twilio from "twilio";
 
-const postDirectIdeaPros: RequestHandler = async (req, res) => {
+const postHlpCreditSoulutions: RequestHandler = async (req, res) => {
     const accountSid = process.env.ACCOUNT_S_ID;
     const authToken = process.env.TWILLIO_AUTH_TOKEN;
     const client = twilio(accountSid, authToken);
@@ -48,11 +48,11 @@ const postDirectIdeaPros: RequestHandler = async (req, res) => {
             ...req.body,
             number: formatPhoneNumber(req.body.phone),
             fundindDataId: uniqueID,
-            type: "direct idea pros quick touch",
+            type: "etna capital Advisors",
         });
 
         const message = await client.messages.create({
-            body: `Dear ${req.body.name}, Your results from Direct Ideas  are now available. Please visit ${process.env.DOMAIN}/assessment-data/direct-idea-pros-quick-touch/${response.fundindDataId} for details. Reply STOP to end`,
+            body: `Dear ${req.body.name}, Your results from Hlp Credit Solutions are now available. Please visit ${process.env.DOMAIN}/assessment-data/hlp-credit-solutions-ripefunding/${response.fundindDataId} for details. Reply STOP to end`,
             from: process.env.SENDER, // Your Twilio phone number
             to: formatPhoneNumber(req.body.phone), // Recipient's phone number
         });
@@ -67,4 +67,4 @@ const postDirectIdeaPros: RequestHandler = async (req, res) => {
     }
 };
 
-export default postDirectIdeaPros;
+export default postHlpCreditSoulutions;
