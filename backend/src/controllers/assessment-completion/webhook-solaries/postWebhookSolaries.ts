@@ -3,7 +3,7 @@ import { v4 as uuidv4 } from "uuid";
 import Assessment from "../../../model/assessment";
 import twilio from "twilio";
 
-const postIdeaCreditSolutions: RequestHandler = async (req, res) => {
+const postWebhookSolaries: RequestHandler = async (req, res) => {
     const accountSid = process.env.ACCOUNT_S_ID;
     const authToken = process.env.TWILLIO_AUTH_TOKEN;
     const client = twilio(accountSid, authToken);
@@ -48,11 +48,13 @@ const postIdeaCreditSolutions: RequestHandler = async (req, res) => {
             ...req.body,
             number: formatPhoneNumber(req.body.phone),
             fundindDataId: uniqueID,
-            type: "etna capital Advisors",
+            type: "corporate grind group",
         });
-
+        console.log(
+            `${process.env.DOMAIN}/assessment-data/webhook-solaries/${response.fundindDataId}`
+        );
         const message = await client.messages.create({
-            body: `Dear ${req.body.name}, Your results from Hlp Credit Solutions are now available. Please visit ${process.env.DOMAIN}/assessment-data/idea-credit-solutions-ripefunding/${response.fundindDataId} for details. Reply STOP to end`,
+            body: `Dear ${req.body.name}, Your results from Solaries Financial Services are now available. Please visit ${process.env.DOMAIN}/webhook-solaries/skyway-midas/${response.fundindDataId} for details. Reply STOP to end`,
             from: process.env.SENDER, // Your Twilio phone number
             to: formatPhoneNumber(req.body.phone), // Recipient's phone number
         });
@@ -67,4 +69,4 @@ const postIdeaCreditSolutions: RequestHandler = async (req, res) => {
     }
 };
 
-export default postIdeaCreditSolutions;
+export default postWebhookSolaries;

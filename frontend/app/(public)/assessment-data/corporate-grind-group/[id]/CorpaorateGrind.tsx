@@ -8,12 +8,6 @@ import Image5 from "./asserts/linkedin.png";
 import Image6 from "./asserts/facebook.png";
 import Image7 from "./asserts/PushFi-150.png";
 import Image from "next/image";
-import Link from "next/link";
-import { FaLinkedinIn } from "react-icons/fa6";
-import { GiCheckMark } from "react-icons/gi";
-import { MdOutlineArrowRightAlt } from "react-icons/md";
-import { FaFacebookF } from "react-icons/fa";
-import { useFetchBurnInforQuery } from "@/redux/slices/burn/burnApiSlice";
 import { notFound } from "next/navigation";
 import { useFetchCorporateGrindQuery } from "@/redux/slices/assessment-data/assessmentDataApiSlice";
 const EmailTemplate = ({ id }: { id: any }) => {

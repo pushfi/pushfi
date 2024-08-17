@@ -11,6 +11,18 @@ import postHlpCreditSoulutions from "../controllers/assessment-completion/hlp-cr
 import fetchHlpCreditSoulutions from "../controllers/assessment-completion/hlp-credit-solutions-ripefunding/fetchHlpCreditSoulutions";
 import postIdeaCreditSolutions from "../controllers/assessment-completion/idea-credit-solutions-ripefunding/postIdeaCreditSolutions";
 import fetchIdeaCreditSolutions from "../controllers/assessment-completion/idea-credit-solutions-ripefunding/fetchIdeaCreditSolutions";
+import postRipeFunding from "../controllers/assessment-completion/ripefunding/postRipeFunding";
+import fetchRipeFunding from "../controllers/assessment-completion/ripefunding/fetchRipeFunding";
+import postSeanSmith from "../controllers/assessment-completion/sean-smith-james-loser-midas/postSeanSmith";
+import fetchSeanSMith from "../controllers/assessment-completion/sean-smith-james-loser-midas/fetchSeanSMith";
+import postSkyCraperCapital from "../controllers/assessment-completion/skycraper-capital/postSkyCraperCapital";
+import fetchSkyCraperCapita from "../controllers/assessment-completion/skycraper-capital/fetchSkyCraperCapita";
+import postSkywayMidas from "../controllers/assessment-completion/skyway-midas/postSkywayMidas";
+import fetchSkywayMidas from "../controllers/assessment-completion/skyway-midas/fetchSkywayMidas";
+import postVentureBoostCapital from "../controllers/assessment-completion/ventureboost-capital/postVentureBoostCapital";
+import fetchVentureBoostCapital from "../controllers/assessment-completion/ventureboost-capital/fetchVentureBoostCapital";
+import postWebhookSolaries from "../controllers/assessment-completion/webhook-solaries/postWebhookSolaries";
+import fetchWebhookSolaries from "../controllers/assessment-completion/webhook-solaries/fetchWebhookSolaries";
 const assessmentRoutes = express.Router();
 
 // corporate grind routes
@@ -48,4 +60,23 @@ assessmentRoutes.get(
     fetchIdeaCreditSolutions
 );
 
+// Ripe funding
+assessmentRoutes.post("/ripefunding", postRipeFunding);
+assessmentRoutes.get("/ripefunding/:id", fetchRipeFunding);
+
+// Sean Smith
+assessmentRoutes.post("/sean-smith-james-loser-midas", postSeanSmith);
+assessmentRoutes.get("/sean-smith-james-loser-midas/:id", fetchSeanSMith);
+
+// Skycrape capital
+assessmentRoutes.post("/skyway-midas", postSkywayMidas);
+assessmentRoutes.get("/skyway-midas/:id", fetchSkywayMidas);
+
+// ventureboost capital
+assessmentRoutes.post("/ventureboost-capital", postVentureBoostCapital);
+assessmentRoutes.get("/ventureboost-capital/:id", fetchVentureBoostCapital);
+
+// ventureboost capital
+assessmentRoutes.post("/webhook-solaries", postWebhookSolaries);
+assessmentRoutes.get("/webhook-solaries/:id", fetchWebhookSolaries);
 export default assessmentRoutes;

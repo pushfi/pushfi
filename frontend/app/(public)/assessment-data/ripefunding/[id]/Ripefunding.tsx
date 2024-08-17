@@ -1,22 +1,40 @@
 "use client";
+
 import React from "react";
-import Image1 from "./asserts/ventureboost.png";
 import Image2 from "./asserts/credit-score.png";
-import Image3 from "./asserts/ventureboost.png";
+import Image3 from "./asserts/ripefunding.png";
 import Image4 from "./asserts/instagram.png";
 import Image5 from "./asserts/linkedin.png";
 import Image6 from "./asserts/facebook.png";
 import Image7 from "./asserts/PushFi-150.png";
 import Image from "next/image";
+import { notFound } from "next/navigation";
+import { useFetchRipeFundingQuery } from "@/redux/slices/assessment-data/assessmentDataApiSlice";
 
-const Ventureboost = () => {
+const Ripefunding = ({ id }: { id: any }) => {
+    // fetch user
+
+    const { data, error, isFetching, isLoading } = useFetchRipeFundingQuery({
+        id,
+    });
+
+    if (isFetching) {
+        return (
+            <div className="w-full h-screen flex justify-center items-center">
+                please wait
+            </div>
+        );
+    }
+    if (error) {
+        return notFound();
+    }
     return (
         <div className="bg-gray-100 font-sans text-gray-700">
-            <div className="p-4 mx-auto max-w-[40rem] ">
+            <div className="p-4 mx-auto max-w-[40rem]">
                 <Image
-                    src={Image1}
+                    src={Image3}
                     alt="HMB Logo Top"
-                    className="w-[70%] max-w-[20rem] m-auto"
+                    className=" w-[70%] max-w-[12rem] mx-auto"
                 />
                 <div className="mt-4 text-left">
                     <p className="text-2xl font-normal ">
@@ -29,7 +47,7 @@ const Ventureboost = () => {
                 </div>
                 <div className="mt-4 text-left flex flex-col gap-6">
                     <p className="text-lg font-semibold text-[#106beb]">
-                        Hello {`{{7.data.applicant.firstName}}`},
+                        Hello {data?.name},
                     </p>
                     <p className="mt-2">
                         Great news! Your funding request has been successfully
@@ -55,26 +73,23 @@ const Ventureboost = () => {
                         </h1>
                         <p>
                             TransUnion ={" "}
-                            <strong className="text-xl">{`{{7.data.applicant.score}}`}</strong>
+                            <strong className="text-xl">
+                                {data?.transUnion}
+                            </strong>
                         </p>
 
                         <div className="w-full flex flex-col">
                             <p>
                                 Unsecured Debt Balance ={" "}
-                                <strong>
-                                    ${`{{7.data.applicant.unsecured_debt}}`}
-                                </strong>
+                                <strong>{data.UnsecuredDebtBalance}</strong>
                             </p>
                             <p>
                                 Revolving Debt Balance ={" "}
-                                <strong>
-                                    $
-                                    {`{{7.data.applicant.total_balance_revolving}}`}
-                                </strong>
+                                <strong>{data.revolvingDebtBalance}</strong>
                             </p>
                             <p>
                                 # of Revolving Accounts ={" "}
-                                <strong>{`{{7.data.applicant.count_revolvingaccounts}}`}</strong>
+                                <strong>{data.revolvingAccounts}</strong>
                             </p>
                         </div>
                     </div>
@@ -90,14 +105,14 @@ const Ventureboost = () => {
                     </h2>
                     <p>
                         Minimum Estimated Range ={" "}
-                        <strong>{`{{49.value}}`}</strong>
+                        <strong>{data.tMinRange}</strong>
                     </p>
                     <p>
                         Maximum Estimated Range ={" "}
-                        <strong>{`{{50.value}}`}</strong>
+                        <strong>{data.tMaxRange}</strong>
                     </p>
                     <p>
-                        Interest Rate Range = <strong>{`{{45.value}}`}</strong>
+                        Interest Rate Range = <strong>{data.tInterest}</strong>
                     </p>
                     <p>
                         Terms = <strong>5 years to 10 years+</strong>
@@ -111,15 +126,15 @@ const Ventureboost = () => {
                     </h2>
                     <p>
                         Minimum Estimated Range ={" "}
-                        <strong>{`{{51.value}}`}</strong>
+                        <strong>{data.cMinRange}</strong>
                     </p>
                     <p>
                         Maximum Estimated Range ={" "}
-                        <strong>{`{{52.value}}`}</strong>
+                        <strong>{data.cMaxRange}</strong>
                     </p>
                     <p>
                         Interest Rate Range ={" "}
-                        <strong>{`{{45.value}}`} + 0% Promotion</strong>
+                        <strong>{data.tInterest} + 0% Promotion</strong>
                     </p>
                     <p>
                         Terms = <strong>Revolving & Charge</strong>
@@ -144,36 +159,53 @@ const Ventureboost = () => {
                 >
                     ACCEPT FUNDING OFFER
                 </a>
-                <Image
-                    src={Image3}
-                    alt=""
-                    className="mx-auto mt-4 full max-w-[15rem]"
-                />
-                <div className="flex flex-col text-left text-[.8rem] leading-4">
-                    {" "}
-                    <span>
-                        This email was sent to:
-                        <strong>{`{{5.PrimaryContactInformation.Email}}`}</strong>
-                        <br />
-                        because you applied for a Personalized Funding Offer
-                        from one of our Partners.
-                    </span>
-                    <span>
-                        <strong>
-                            <a
-                                href="https://www.ventureboostcapital.com/"
-                                target="_blank"
-                                rel="noopener"
-                                className="text-gray-500"
-                            >
-                                Unsubscribe from this Service
-                            </a>
-                        </strong>
-                    </span>
+                <Image src={Image3} alt="" className="mx-auto mt-4 w-1/4" />
+                <div className="mt-4 flex justify-center space-x-2">
+                    <a
+                        href="https://www.instagram.com/ripefunding/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="w-8 h-8"
+                    >
+                        <Image
+                            src={Image4}
+                            alt="Instagram"
+                            className="w-full h-full"
+                        />
+                    </a>
+                    <a
+                        href="https://www.linkedin.com/company/ripefunding"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="w-8 h-8"
+                    >
+                        <Image
+                            src={Image5}
+                            alt="LinkedIn"
+                            className="w-full h-full"
+                        />
+                    </a>
+                    <a
+                        href="https://www.facebook.com/ripefunding/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="w-8 h-8"
+                    >
+                        <Image
+                            src={Image6}
+                            alt="Facebook"
+                            className="w-full h-full"
+                        />
+                    </a>
                 </div>
+                <Image
+                    src={Image7}
+                    alt="HMB Logo"
+                    className="mx-auto mt-4 w-36"
+                />
             </div>
         </div>
     );
 };
 
-export default Ventureboost;
+export default Ripefunding;

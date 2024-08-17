@@ -43,6 +43,47 @@ export const assessmentDataApiSllice = apiSlice.injectEndpoints({
                 return `/backend/assessment/idea-credit-solutions-ripefunding/${body.id}`;
             },
         }),
+
+        // fetch ripe funding
+        fetchRipeFunding: builder.query({
+            query: (body) => {
+                return `/backend/assessment/ripefunding/${body.id}`;
+            },
+        }),
+        // fetch Sean Smith James Loser Midas
+        fetchSeanSmithJames: builder.query({
+            query: (body) => {
+                return `/backend/assessment/sean-smith-james-loser-midas/${body.id}`;
+            },
+        }),
+
+        // fetch skycraper capital
+        fetchSkyCraperCapital: builder.query({
+            query: (body) => {
+                return `/backend/assessment/skyscraper-capital/${body.id}`;
+            },
+        }),
+
+        // fetch skycraper capital
+        fetchSkywayMidas: builder.query({
+            query: (body) => {
+                return `/backend/assessment/skyway-midas/${body.id}`;
+            },
+        }),
+
+        // fetch skycraper capital
+        fetchVetureBoostCapital: builder.query({
+            query: (body) => {
+                return `/backend/assessment/ventureboost-capital/${body.id}`;
+            },
+        }),
+
+        // fetch skycraper capital
+        fetchWebhookSolaries: builder.query({
+            query: (body) => {
+                return `/backend/assessment/webhook-solaries/${body.id}`;
+            },
+        }),
     }),
 });
 
@@ -53,4 +94,10 @@ export const {
     useFetchEtnaCapitalQuery,
     useFetchHlpCreditSolutionsQuery,
     useFetchIdeaCreditSolutionsQuery,
+    useFetchRipeFundingQuery,
+    useFetchSeanSmithJamesQuery,
+    useFetchSkyCraperCapitalQuery,
+    useFetchSkywayMidasQuery,
+    useFetchVetureBoostCapitalQuery,
+    useFetchWebhookSolariesQuery,
 } = assessmentDataApiSllice;
