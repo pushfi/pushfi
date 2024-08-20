@@ -54,7 +54,7 @@ const postWebhookSolaries: RequestHandler = async (req, res) => {
             `${process.env.DOMAIN}/assessment-data/webhook-solaries/${response.fundindDataId}`
         );
         const message = await client.messages.create({
-            body: `Dear ${req.body.name}, Your results from Solaries Financial Services are now available. Please visit ${process.env.DOMAIN}/webhook-solaries/skyway-midas/${response.fundindDataId} for details. Reply STOP to end`,
+            body: `Dear ${req.body.name}, Your results from Solaris Financial Services are now available. Please visit ${process.env.DOMAIN}/webhook-solaries/skyway-midas/${response.fundindDataId} for details. Reply STOP to end`,
             from: process.env.SENDER, // Your Twilio phone number
             to: formatPhoneNumber(req.body.phone), // Recipient's phone number
         });
