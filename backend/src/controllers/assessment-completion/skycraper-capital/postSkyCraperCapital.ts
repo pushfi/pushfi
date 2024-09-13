@@ -7,6 +7,7 @@ const postSkyCraperCapital: RequestHandler = async (req, res) => {
     const accountSid = process.env.ACCOUNT_S_ID;
     const authToken = process.env.TWILLIO_AUTH_TOKEN;
     const client = twilio(accountSid, authToken);
+
     try {
         const requiredFields = [
             "name",

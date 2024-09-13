@@ -79,4 +79,8 @@ assessmentRoutes.get("/ventureboost-capital/:id", fetchVentureBoostCapital);
 // ventureboost capital
 assessmentRoutes.post("/webhook-solaries", postWebhookSolaries);
 assessmentRoutes.get("/webhook-solaries/:id", fetchWebhookSolaries);
+
+// ventureboost capital
+assessmentRoutes.post("/skyscraper-capital", postSkyCraperCapital);
+assessmentRoutes.get("/skyscraper-capital/:id", fetchSkyCraperCapita);
 export default assessmentRoutes;
