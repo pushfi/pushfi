@@ -52,7 +52,7 @@ const postRipeFunding: RequestHandler = async (req, res) => {
         });
 
         const message = await client.messages.create({
-            body: `Dear ${req.body.name}, Your results from Ripe funding are now available. Please visit ${process.env.DOMAIN}/assessment-data/ripefunding/${response.fundindDataId} for details. Reply STOP to end`,
+            body: `Dear ${req.body.name}, Your results from RipeFunding  are now available. Please visit ${process.env.DOMAIN}/assessment-data/ripefunding/${response.fundindDataId} for details. Reply STOP to end`,
             from: process.env.SENDER, // Your Twilio phone number
             to: formatPhoneNumber(req.body.phone), // Recipient's phone number
         });
