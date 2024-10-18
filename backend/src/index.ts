@@ -15,6 +15,7 @@ import publicRoutes from "./routes/publicRoutes";
 import burnsRoutes from "./routes/burnsRoutes";
 import midasRoutes from "./routes/midasRoutes";
 import assessmentRoutes from "./routes/assessmentRoutes";
+import adminRoutes from "./routes/adminRoutes";
 
 dotenv.config();
 
@@ -43,6 +44,7 @@ const routesConfig: RouteConfig = {
     burn: burnsRoutes,
     midas: midasRoutes,
     assessment: assessmentRoutes,
+    admin: adminRoutes,
 };
 
 // Function to register routes

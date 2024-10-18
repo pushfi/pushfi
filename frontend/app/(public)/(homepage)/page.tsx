@@ -1,10 +1,9 @@
 import Header from "@/components/header/Header";
 import React from "react";
+import Homepage from "./Homepage";
 
 const page = () => {
-    return (
-        <div className="flex justify-center h-screen items-center">pushfi</div>
-    );
+    return <Homepage />;
 };
 
 export default page;
