@@ -53,7 +53,7 @@ const FormUi = () => {
 	useEffect(() => {
 		// @ts-ignore
 		if (session?.data?.user?.role === "admin") {
-			router.replace("/asms-list");
+			router.replace("/sms-list");
 		}
 	}, [session?.data?.user]);
 

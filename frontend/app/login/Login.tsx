@@ -34,19 +34,6 @@ const Login = () => {
 			<div className="fixed bottom-0 left-0  h-full w-full flex justify-center items-center z-20">
 				<FormUi />
 			</div>
-			<div className="hidden lg:flex items-end h-full  min-h-screen w-full">
-				<div className="flex flex-col relative h-[20rem] justify-end">
-					{/* <Image
-						src={theme === "dark" ? authmask1 : authmask2}
-						alt=""
-						className="w-full"
-					/> */}
-					<div className="flex absolute w-full justify-between bottom-0 z-10">
-						{/* <Image src={tree1} alt="" className=" w-[16rem] h-fit" />
-						<Image src={tree2} alt="" className=" w-[10rem]" /> */}
-					</div>
-				</div>
-			</div>
 		</div>
 	);
 };
