@@ -55,8 +55,6 @@ const FormUi = () => {
 		if (session?.data?.user?.role === "admin") {
 			router.replace("/asms-list");
 		}
-
-		console.log(session);
 	}, [session?.data?.user]);
 
 	const [checked, setchecked] = useState(false);
@@ -68,10 +66,10 @@ const FormUi = () => {
 			{loading && <Preloader />}
 			<div className="flex justify-center gap-2 items-center">
 				{/* <Image src={Logo} alt="" className="w-[2.5rem]" /> */}
-				<p className="font-bold text-2xl">MIDAS</p>
+				<p className="font-bold text-2xl">PUSHFI</p>
 			</div>
 			<div className="flex py-4 gap-4 flex-col">
-				<h3 className="text-xl font-semibold">Welcome To Midas!👋🏻</h3>
+				<h3 className="text-xl font-semibold">Welcome To Pushfi!👋🏻</h3>
 				<p className="text-sm">
 					Please sign-in to your account and start the adventure
 				</p>
