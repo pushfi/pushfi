@@ -3,20 +3,13 @@ import { useFetchSmsListQuery } from "@/redux/slices/admin/adminApiSlice";
 import { signOut } from "next-auth/react";
 import Image from "next/image";
 import { notFound } from "next/navigation";
-import React from "react";
+import React, { useEffect } from "react";
 
 const SmsList = () => {
 	// fetch user
 
-	const { data, error, isFetching, isLoading } = useFetchSmsListQuery(null);
-
-	if (isFetching) {
-		return (
-			<div className="w-full h-screen flex justify-center items-center">
-				please wait
-			</div>
-		);
-	}
+	const { data, error, isFetching, isLoading, refetch } =
+		useFetchSmsListQuery(null);
 	function convertToDate(inputDate: any): string {
 		const date = new Date(inputDate);
 		const month = String(date.getMonth() + 1).padStart(2, "0"); // Months are 0-based
@@ -24,6 +17,17 @@ const SmsList = () => {
 		const year = date.getFullYear();
 
 		return `${month}/${day}/${year}`;
+	}
+	useEffect(() => {
+		refetch();
+	}, []);
+
+	if (isFetching) {
+		return (
+			<div className="w-full h-screen flex justify-center items-center">
+				please wait
+			</div>
+		);
 	}
 
 	if (error) {

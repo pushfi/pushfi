@@ -26,21 +26,22 @@ const FormUi = () => {
 	const onSubmit = async (data: FormData) => {
 		try {
 			setloading(true);
-			console.log(data);
 
 			const response: any | { data: string } = await signIn("credentials", {
 				...data,
 				redirect: false,
 			});
-			console.log(response);
 
 			if (response?.error && response.error !== "CredentialsSignin") {
 				console.log(response?.error);
 
 				errorAlert(response.error);
 			}
+
 			setloading(false);
-			router.replace("/sms-list");
+			if (response?.error === null) {
+				window.location.reload();
+			}
 		} catch (error) {
 			console.log(error);
 			setloading(false);
@@ -53,8 +54,10 @@ const FormUi = () => {
 	useEffect(() => {
 		// @ts-ignore
 		if (session?.data?.user?.role === "admin") {
-			router.replace("/sms-list");
+			router.push("/sms-list");
 		}
+		router.push("/sms-list");
+		console.log(session);
 	}, [session?.data?.user]);
 
 	const [checked, setchecked] = useState(false);
@@ -66,7 +69,9 @@ const FormUi = () => {
 			{loading && <Preloader />}
 			<div className="flex justify-center gap-2 items-center">
 				{/* <Image src={Logo} alt="" className="w-[2.5rem]" /> */}
-				<p className="font-bold text-2xl">PUSHFI</p>
+				<Link href={"/"} className="font-bold text-2xl">
+					PUSHFI
+				</Link>
 			</div>
 			<div className="flex py-4 gap-4 flex-col">
 				<h3 className="text-xl font-semibold">Welcome To Pushfi!👋🏻</h3>

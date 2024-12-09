@@ -1,23 +1,15 @@
 import { withAuth } from "next-auth/middleware";
-import { NextResponse } from "next/server";
 
 export default withAuth(
+	// `withAuth` augments your `Request` with the user's token.
 	function middleware(req) {
-		const userRole = req.nextauth.token?.role;
-		if (userRole === "admin" && !req.nextUrl.pathname.startsWith("/sms-list")) {
-			return NextResponse.redirect(new URL("/sms-list", req.url));
-		}
+		console.log(req.nextauth.token);
 	},
 	{
 		callbacks: {
 			authorized: ({ token }) => token?.role === "admin",
 		},
-		pages: {
-			signIn: "/login",
-		},
 	}
 );
 
-export const config = {
-	matcher: ["/sms-list/:path*"],
-};
+export const config = { matcher: ["/sms-list"] };

@@ -36,7 +36,6 @@ export const options = {
 							},
 						}
 					);
-					console.log(res);
 
 					if (res.data.error) {
 						console.log("error2", res.data.error);
