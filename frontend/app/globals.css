@@ -1,3 +1,134 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+	:root {
+		--color-primary: 136, 85, 246;
+		--color-secondary: 174, 137, 255;
+		--color-redaccent: 255, 76, 81;
+		--color-yellowaccent: 255, 180, 0;
+		--color-greenaccent: 86, 202, 0;
+		--color-bgColor: 244, 245, 250;
+		--color-bgColorFade: 255, 255, 255;
+		--color-textColor: 75, 85, 99;
+	}
+	@media (prefers-color-scheme: dark) {
+		:root {
+			--color-primary: 136, 85, 246;
+			--color-secondary: 174, 137, 255;
+			--color-redaccent: 255, 76, 81;
+			--color-yellowaccent: 255, 180, 0;
+			--color-greenaccent: 86, 202, 0;
+			--color-bgColor: 40, 36, 61;
+			--color-bgColorFade: 49, 45, 75;
+			--color-textColor: 209, 213, 219;
+		}
+	}
+	:root[data-theme="dark"] {
+		--color-primary: 136, 85, 246;
+		--color-secondary: 174, 137, 255;
+		--color-redaccent: 255, 76, 81;
+		--color-yellowaccent: 255, 180, 0;
+		--color-greenaccent: 86, 202, 0;
+		--color-bgColor: 40, 36, 61;
+		--color-bgColorFade: 49, 45, 75;
+		--color-textColor: 209, 213, 219;
+	}
+}
+/* scroll barr */
+
+/* width */
+::-webkit-scrollbar {
+	width: 6px;
+	height: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+	background: transparent;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+	background: #9236fb6f;
+	border-radius: 5px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+	background: #8018f8;
+}
+
+/* hide scroll bar for kanban columns */
+/*  Chrome, Safari and Opera */
+.hide-scroll-bar::-webkit-scrollbar {
+	display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.hide-scroll-bar {
+	-ms-overflow-style: none; /* IE and Edge */
+	scrollbar-width: none; /* Firefox */
+}
+.no-scroll {
+	margin: 0;
+	height: 100vh;
+	overflow: hidden;
+	width: 100vw;
+}
+
+/* Input styles */
+.custom-input {
+	@apply h-14 w-full px-4 text-[1rem] border-[0.02rem] rounded-lg border-textColor/30 border-opacity-40 outline-none focus:border-2 focus:border-primary transition duration-200 hover:border-2 placeholder:text-textColor/40 bg-bgColorFade;
+	-webkit-text-fill-color: currentColor; /* Prevents autofill color change */
+	background-color: inherit; /* Ensures background doesn't change on autofill */
+}
+
+/* Input span styles */
+.custom-input-span {
+	@apply flex text-[1rem] text-textColor/80 text-opacity-80 absolute left-0 h-12 items-center mx-4 transition duration-200 input-text pointer-events-none;
+}
+
+/* Input p styles */
+.custom-input-p {
+	@apply h-fit w-full bg-bgColorFade px-2;
+}
+.input-validation-error {
+	@apply text-red-500 text-[0.8rem] px-4;
+}
+/* Animate form inputs */
+input:focus ~ .input-text,
+input:not(:placeholder-shown) ~ .input-text {
+	@apply transform -translate-y-7 -translate-x-4 scale-75;
+}
+
+input:focus ~ .input-text {
+	@apply text-primary;
+}
+
+input:not(:focus):not(:placeholder-shown) ~ .input-text {
+	@apply text-textColor/80;
+}
+
+/* Select styles */
+.custom-select {
+	@apply h-14 w-full px-4 text-lg border-[0.02rem] rounded-lg border-textColor/30 border-opacity-50 outline-none focus:border-2 focus:border-primary transition duration-200 hover:border-2 bg-bgColorFade;
+}
+
+/* Option styles */
+.custom-option {
+	@apply text-lg text-textColor/80 text-opacity-80 px-4 py-2;
+}
+
+select:focus ~ .input-text {
+	@apply text-primary;
+}
+
+/* prevent autofill from changing background color of inputs */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+	transition: background-color 5000000s ease-in-out 0s;
+}
