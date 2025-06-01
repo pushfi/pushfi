@@ -23,6 +23,8 @@ import postVentureBoostCapital from "../controllers/assessment-completion/ventur
 import fetchVentureBoostCapital from "../controllers/assessment-completion/ventureboost-capital/fetchVentureBoostCapital";
 import postWebhookSolaries from "../controllers/assessment-completion/webhook-solaries/postWebhookSolaries";
 import fetchWebhookSolaries from "../controllers/assessment-completion/webhook-solaries/fetchWebhookSolaries";
+import postLendingTree from "../controllers/assessment-completion/hmb-lending-tree/postLendingTree";
+import fetchLendingTree from "../controllers/assessment-completion/hmb-lending-tree/fetchLendingTree";
 const assessmentRoutes = express.Router();
 
 // corporate grind routes
@@ -42,22 +44,22 @@ assessmentRoutes.get("/etna-capital-quick-touch/:id", fetchEtnaCapital);
 
 // Hlp credit solutions
 assessmentRoutes.post(
-    "/hlp-credit-solutions-ripefunding",
-    postHlpCreditSoulutions
+  "/hlp-credit-solutions-ripefunding",
+  postHlpCreditSoulutions
 );
 assessmentRoutes.get(
-    "/hlp-credit-solutions-ripefunding/:id",
-    fetchHlpCreditSoulutions
+  "/hlp-credit-solutions-ripefunding/:id",
+  fetchHlpCreditSoulutions
 );
 
 // Idea credit solutions
 assessmentRoutes.post(
-    "/idea-credit-solutions-ripefunding",
-    postIdeaCreditSolutions
+  "/idea-credit-solutions-ripefunding",
+  postIdeaCreditSolutions
 );
 assessmentRoutes.get(
-    "/idea-credit-solutions-ripefunding/:id",
-    fetchIdeaCreditSolutions
+  "/idea-credit-solutions-ripefunding/:id",
+  fetchIdeaCreditSolutions
 );
 
 // Ripe funding
@@ -83,4 +85,8 @@ assessmentRoutes.get("/webhook-solaries/:id", fetchWebhookSolaries);
 // ventureboost capital
 assessmentRoutes.post("/skyscraper-capital", postSkyCraperCapital);
 assessmentRoutes.get("/skyscraper-capital/:id", fetchSkyCraperCapita);
+
+// Lending Tree
+assessmentRoutes.post("/lending-tree", postLendingTree);
+assessmentRoutes.get("/lending-tree/:id", fetchLendingTree);
 export default assessmentRoutes;

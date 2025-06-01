@@ -1,9 +1,9 @@
 import express, {
-	Application,
-	Express,
-	NextFunction,
-	Request,
-	Response,
+  Application,
+  Express,
+  NextFunction,
+  Request,
+  Response,
 } from "express";
 import cors from "cors";
 import colors from "colors";
@@ -32,32 +32,32 @@ app.use(cookieParser());
 // Middleware for parsing JSON and URL-encoded data
 app.use(express.json({ limit: "50mb" })); // Increase limit as needed
 app.use(
-	express.urlencoded({ limit: "50mb", extended: true, parameterLimit: 50000 })
+  express.urlencoded({ limit: "50mb", extended: true, parameterLimit: 50000 })
 );
 
 // Routes configuration
 interface RouteConfig {
-	[key: string]: any;
+  [key: string]: any;
 }
 
 const routesConfig: RouteConfig = {
-	public: publicRoutes,
-	burn: burnsRoutes,
-	midas: midasRoutes,
-	assessment: assessmentRoutes,
-	admin: adminRoutes,
-	auth: authRoutes,
+  public: publicRoutes,
+  burn: burnsRoutes,
+  midas: midasRoutes,
+  assessment: assessmentRoutes,
+  admin: adminRoutes,
+  auth: authRoutes,
 };
 
 // Function to register routes
 const registerRoutes = (
-	app: Application,
-	basePath: string,
-	routes: Record<string, any>
+  app: Application,
+  basePath: string,
+  routes: Record<string, any>
 ) => {
-	Object.entries(routes).forEach(([key, routeHandler]) => {
-		app.use(`${basePath}/${key}`, routeHandler);
-	});
+  Object.entries(routes).forEach(([key, routeHandler]) => {
+    app.use(`${basePath}/${key}`, routeHandler);
+  });
 };
 
 // Register all routes with the base path /backend
@@ -65,18 +65,18 @@ registerRoutes(app, "/backend", routesConfig);
 
 // Error handler middleware
 app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
-	errorHandler(err, req, res, next);
+  errorHandler(err, req, res, next);
 });
 
 // Connect to the database and start the server
 connectDB()
-	.then(() => {
-		app.listen(port, () => {
-			console.log(colors.green(`Server is running on port ${port}`));
-		});
-	})
-	.catch((err: Error) => {
-		console.error(
-			colors.red(`Failed to connect to the database: ${err.message}`)
-		);
-	});
+  .then(() => {
+    app.listen(port, () => {
+      console.log(colors.green(`Server is running on port ${port}`));
+    });
+  })
+  .catch((err: Error) => {
+    console.error(
+      colors.red(`Failed to connect to the database: ${err.message}`)
+    );
+  });
